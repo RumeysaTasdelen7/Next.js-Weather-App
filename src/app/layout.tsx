@@ -17,10 +17,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const QueryClient = new QueryClient();
+  const queryClient = new QueryClient();
   return (
     <html lang="en">
-      <QueryClientProvider client={QueryClient}>
+      <QueryClientProvider client={queryClient}>
         <body className={inter.className}>{children}</body>
       </QueryClientProvider>
     </html>
