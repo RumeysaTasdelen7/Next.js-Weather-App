@@ -63,10 +63,10 @@ interface WeatherData {
 
 export default function Home() {
   const { isLoading, error, data } = useQuery<WeatherData>
-  ("repoData", async () =>
+  ("repoData",async () =>
     {
-      const {data} = await axios.get(
-        'https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=0e1eab5d4aae44acfc237796afc79d56'
+      const { data } = await axios.get(
+        'https://api.openweathermap.org/data/2.5/weather?q=${process.env.NEXT_PUBLIC_WEATHER_KEY}'
       );
       return data;
     }
@@ -75,7 +75,7 @@ export default function Home() {
   // ).then((res) => res.json())
 );
 
-console.log("data", data);
+console.log("data", data?.city.country);
 
   if (isLoading) return "Loading...";
 
